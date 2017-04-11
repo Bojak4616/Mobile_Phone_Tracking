@@ -1,0 +1,2 @@
+scapy>=2.3.3
+argparse>=1.2.1
