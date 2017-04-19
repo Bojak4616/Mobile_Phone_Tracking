@@ -5,9 +5,9 @@ The attack takes advantage of phones responding to probe replys with their globa
 
 ## Assumptions
 This attack assumes the following:
-You know what MAC of the phone you are looking for
-You are in range of your target
-You know if the device is IOS or Android
+* You know what MAC of the phone you are looking for
+* You are in range of your target
+* You know if the device is IOS or Android
 
 ## Pitfalls
 [This paper roughly claims ~80% accuracy on fingerprint techniques.](http://papers.mathyvanhoef.com/asiaccs2016.pdf) Although it does not take into account combining them together OR how good these techniques are for distinguising seperate devices of the same model. That being said, I'm still not sure how much same device types differ from one another in their probe requests.
