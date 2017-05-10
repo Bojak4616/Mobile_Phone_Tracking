@@ -3,6 +3,7 @@ import argparse
 import os
 from multiprocessing import Process
 from scapy.all import *
+from time import sleep
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -23,16 +24,22 @@ def virtual_check(rMAC):
     def _virtual_check(pkt):
         if pkt.haslayer(Dot11) and pkt.type == 0 and pkt.getlayer(Dot11).subtype == 4:
             # Make sure the local bit is set in the MAC
-            if pkt.addr2 == rMAC:
-                # Write to pipe
+            try:
+                if pkt.addr2 == rMAC:
+                    # Write to pipe
+                    with open('/tmp/pkts','wb') as PKT:
+                        PKT.write(str(pkt))
+                    #MACS.append(pkt)
+                if bin(int(pkt.addr2[:2],16))[2:].zfill(8)[-2] == "1":
+                    # Write to pipe
+                    with open('/tmp/pkts','wb') as PKT:
+                        PKT.write(str(pkt))
+                    #MACS.append(pkt)
+            except IOError:
+                sleep(.2)
                 with open('/tmp/pkts','wb') as PKT:
                     PKT.write(str(pkt))
-                #MACS.append(pkt)
-            if bin(int(pkt.addr2[:2],16))[2:].zfill(8)[-2] == "1":
-                # Write to pipe
-                with open('/tmp/pkts','wb') as PKT:
-                    PKT.write(str(pkt))
-                #MACS.append(pkt)
+
     return _virtual_check
         
 
