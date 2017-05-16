@@ -1,7 +1,7 @@
 # Mobile_Phone_Tracking
 This repository is source code for some of the attacks defined in this paper (https://arxiv.org/pdf/1703.02874v1.pdf)
 
-The attack takes advantage of phones responding to probe replys with their globally unique MAC address. This can be used to isolate a target and gain information about what their request looks like when defaulting to virtual MAC address probe request broadcasts. Once a fingerprint for the device is created, it can be tracked when on or off WiFi without responding to all requests sniffed on the network.
+The attack takes advantage of phones broadcasting probe requests. This can be used to isolate a target and gain information about what their request looks like when defaulting to virtual MAC address probe request broadcasts. Once a fingerprint for the device is created, it can be tracked when on or off WiFi without responding to all requests sniffed on the network.
 
 ## Assumptions
 This attack assumes the following:
